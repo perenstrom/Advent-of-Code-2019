@@ -1,7 +1,7 @@
 use std::cmp;
 
 fn main() {
-  let input_modules = [
+  let input_modules: [u32; 100] = [
     140170, 75120, 75645, 134664, 124948, 137630, 146662, 116881, 120030, 94332, 50473, 59361,
     128237, 84894, 51368, 128802, 57275, 129235, 113481, 66378, 55842, 90548, 107696, 53603,
     130458, 80306, 120820, 131313, 100303, 59224, 123369, 140584, 60642, 68184, 103101, 82278,
@@ -15,8 +15,14 @@ fn main() {
 
   let mut required_fuel = 0;
   for module in input_modules.iter() {
-    required_fuel += cmp::max(module / 3 - 2, 0);
+    required_fuel += calculate_required_fuel(module);
   }
 
   println!("The required fuel is {}", required_fuel);
+}
+
+fn calculate_required_fuel(mass: &u32) -> u32 {
+  let required_fuel = cmp::max(mass / 3 - 2, 0);
+
+  required_fuel
 }
